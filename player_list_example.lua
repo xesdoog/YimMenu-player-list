@@ -31,6 +31,6 @@ playerList:add_imgui(function()
   ---------------test to see if it's grabbing the correct player------------------
   if ImGui.Button("Get Player Coords") then
     local playerCoords = ENTITY.GET_ENTITY_COORDS(selectedPlayer)
-    log.debug(tostring(player_name.."'s coordinates: "..playerCoords))
+    log.debug(player_name.."'s coordinates: "..tostring(playerCoords))
   end
 end)
