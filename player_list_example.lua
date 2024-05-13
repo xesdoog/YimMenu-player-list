@@ -17,8 +17,16 @@ local function displayPlayerList()
     for _, player in ipairs(filteredPlayers) do
       local playerName = PLAYER.GET_PLAYER_NAME(NETWORK.NETWORK_GET_PLAYER_INDEX_FROM_PED(player))
       local playerHost = NETWORK.NETWORK_GET_HOST_PLAYER_INDEX()
+      local friendCount = NETWORK.NETWORK_GET_FRIEND_COUNT()
       if NETWORK.NETWORK_GET_PLAYER_INDEX_FROM_PED(player) == PLAYER.PLAYER_ID() then
         playerName = playerName.."  [You]"
+      end
+      if friendCount > 0 then
+        for i = 0, friendCount do
+          if playerName == NETWORK.NETWORK_GET_FRIEND_NAME(i) then
+            playerName = playerName.."  [Friend]"
+          end
+        end
       end
       if playerHost == NETWORK.NETWORK_GET_PLAYER_INDEX_FROM_PED(player) then
         playerName = playerName.."  [Host]"
